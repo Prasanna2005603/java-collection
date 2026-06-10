@@ -1,0 +1,16 @@
+import java.util.*;
+public class FindDuplicateFileNames {
+    public List<String> findDuplicates(String[] files) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String f : files) map.merge(f, 1, Integer::sum);
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> e : map.entrySet())
+            if (e.getValue() > 1) result.add(e.getKey());
+        return result;
+    }
+    public static void main(String[] args) {
+        String[] files = {"resume.pdf", "photo.png", "resume.pdf"};
+        System.out.println("Input:  " + Arrays.toString(files));
+        System.out.println("Output: " + new FindDuplicateFileNames().findDuplicates(files));
+    }
+}
