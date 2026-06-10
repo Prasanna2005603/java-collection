@@ -1,0 +1,15 @@
+import java.util.*;
+public class FindFirstRepeatedElement {
+    public int firstRepeated(int[] nums) {
+        HashSet<Integer> seen = new HashSet<>();
+        for (int num : nums) {
+            if (!seen.add(num)) return num;
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        int[] nums = {2, 5, 1, 2, 3, 5};
+        System.out.println("Input:  " + Arrays.toString(nums));
+        System.out.println("Output: " + new FindFirstRepeatedElement().firstRepeated(nums));
+    }
+}
