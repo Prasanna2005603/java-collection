@@ -1,0 +1,17 @@
+import java.util.*;
+public class FindPairWithTargetSum {
+    public boolean hasPairWithSum(ArrayList<Integer> list, int target) {
+        HashSet<Integer> seen = new HashSet<>();
+        for (int num : list) {
+            if (seen.contains(target - num)) return true;
+            seen.add(num);
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(2,7,11,15));
+        int target = 9;
+        System.out.println("Input:  " + list + ", target = " + target);
+        System.out.println("Output: " + new FindPairWithTargetSum().hasPairWithSum(list, target));
+    }
+}
