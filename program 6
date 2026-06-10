@@ -1,0 +1,18 @@
+import java.util.*;
+public class CharacterFrequencySort {
+    public String frequencySort(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : s.toCharArray()) map.merge(c, 1, Integer::sum);
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort((a, b) -> b.getValue() - a.getValue());
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<Character, Integer> e : list)
+            for (int i = 0; i < e.getValue(); i++) sb.append(e.getKey());
+        return sb.toString();
+    }
+    public static void main(String[] args) {
+        String s = "tree";
+        System.out.println("Input:  " + s);
+        System.out.println("Output: " + new CharacterFrequencySort().frequencySort(s));
+    }
+}
